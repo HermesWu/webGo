@@ -1,0 +1,40 @@
+.side-bar {
+	width: 100%;
+	position: relative;
+	float: none;
+}
+
+.side-bar a {
+	text-align: center;
+}
+
+.main {
+    float: none;
+    padding-left: 10px;
+    padding-right: 20px;
+    width: 100%;
+    color: #454545;
+}
+
+.article-list {
+	margin-right: 0;
+}
+
+.side-bar .nvg,
+.side-bar .tag-list {
+	display: none;
+}
+
+#menu-check:checked ~.nvg,
+#menu-check:checked ~.tag-list {
+    display: block;
+}
+
+
+
+#menu-toggle {
+	display: block;
+	position: absolute;
+	top: 10px;
+	right: 0px;
+}
