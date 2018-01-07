@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Keywords" content="关键字,关键词">
+    <meta name="Description" content="描述和简介">
+    <title>Title</title>
+    <script src="../vue/vue.js"></script>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        body,ul,li,ol,dl,dd,p,h1,h2,h3,h4,h5,h6{ margin:0;}
+        a{text-decoration:none;}
+        img{border:none;}
+        /*ol,ul{list-style:none;}*/
+	</style>
+</head>
+<body>
+    <div id="app-2">
+        <p v-bind:title="message">鼠标悬停几秒查看此处动态绑定的提示信息！</p>
+
+    </div>
+
+    <div id="app-3">
+        <p v-if="seen">{{message}}</p>
+    </div>
+
+    <div id="app-4">
+        <ol>
+            <li v-for="todo in todos">
+                {{todo.test}}
+            </li>
+        </ol>
+    </div>
+
+    <div id="app-5">
+        <p>{{message}}</p>
+        <button v-on:click="reverseMessage">逆转信息</button>
+    </div>
+
+    <div id="app-6">
+        <p>{{message}}</p>
+        <input v-model="message">
+    </div>
+
+    <div id="app-7">
+        <ol>
+            <!--
+            现在我们为每个todo-item提供todo对象
+            todo对象是变量，及其内容可以是动态的。
+            我们也需要为每个组件提供一个'key'，稍后再
+            作详细解释
+            -->
+            <todo-item
+                v-for="item in groceryList"
+                v-bind:todo="item"
+                v-bind:key="item.id">
+            </todo-item>
+        </ol>
+    </div>
+
+    <div id="app-8">
+        <p>我最喜欢的游戏是:{{mygame}}</p>
+        <button v-on:click="isMyGame('英雄联盟')">英雄联盟</button>
+        <button v-on:click="isMyGame('地下城与勇士')">地下城与勇士</button>
+        <button v-on:click="isMyGame('绝地求生')">绝地求生</button>
+        <button v-on:click="isMyGame('三目童子')">三目童子</button>
+        <button @click="isMyGame('超级玛丽')">超级玛丽</button>
+    </div>
+
+    <div id="app-9">
+        <p>{{message}}</p>
+        <p>{{message | toUpper}}</p>
+        <hr>
+        <p>现在的工作已经完成{{num}}({{num | toPercentage}})</p>
+    </div>
+
+    <script>
+        Vue.component('todo-item', {
+            props: ['todo'],
+            template: '<li>{{todo.text}}</li>'
+        });
+
+        var app2 = new Vue({
+            el: '#app-2',
+            data: {
+                seen:false,
+                message: '页面加载于 ' + new Date().toLocaleString(),
+            },
+        });
+
+        var app3 = new Vue({
+            el:'#app-3',
+            data:{
+                seen: true,
+                message:'你看见我啦！'
+            }
+        });
+
+        var app4 = new Vue({
+            el:'#app-4',
+            data:{
+                todos:[
+                    {test:'学习 JavaScript'},
+                    {test:'学习 Vue'},
+                    {test:'整个牛项目'}
+                ]
+            }
+        });
+
+        var app5 = new Vue({
+            el:'#app-5',
+            data: {
+                message:'Hello Vue.js'
+            },
+            methods:{
+                reverseMessage:function() {
+                    this.message = this.message.split('').reverse().join('');
+                }
+            }
+        });
+
+        var app6 = new Vue({
+            el:'#app-6',
+            data:{
+                message:'Hello Vue.js'
+            }
+        });
+
+        var app7 = new Vue({
+            el: '#app-7',
+            data: {
+                groceryList: [
+                    {id: 0, text: '蔬菜'},
+                    {id: 1, text: '奶酪'},
+                    {id: 2, text: '随便其他什么人吃的东西'}
+                ]
+            }
+        });
+        //按钮事件
+        var app8 = new Vue({
+            el: '#app-8',
+            data: {
+                mygame: '英雄联盟'
+            },
+            methods: {
+                isMyGame: function(pname) {
+                    this.mygame = pname
+                }
+            }
+        });
+        //过滤器
+        var app9 = new Vue({
+            el: '#app-9',
+            data: {
+                num: 0.3,
+                message: 'hello vue.js world'
+            },
+            filters: {
+                toUpper: function(value){
+                    return value.toUpperCase();
+                },
+                toPercentage: function(num) {
+                    return num * 100 + '%';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

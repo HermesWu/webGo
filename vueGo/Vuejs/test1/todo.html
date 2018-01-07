@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="val" @keyup.enter="add">
+    <ul>
+        <li v-for="(a, index) in arr" >{{ a }}<button @click="remove(index)" >删除</button></li>
+    </ul>
+</div>
+<script src="../vue/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            val: '',
+            arr: []
+        },
+        methods: {
+            add() {
+                this.arr.unshift(this.val);
+                this.val = '';
+            },
+            remove(i) {
+                this.arr = this.arr.filter((item, index) => index !== i)
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

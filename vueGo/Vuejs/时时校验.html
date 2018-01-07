@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Keywords" content="关键字,关键词">
+    <meta name="Description" content="描述和简介">
+    <title>Title</title>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        body,ul,li,ol,dl,dd,p,h1,h2,h3,h4,h5,h6{ margin:0;}
+        a{text-decoration:none;}
+        img{border:none;}
+        ol,ul{list-style:none;}
+	</style>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="a">
+        {{ msg }}
+    </div>
+
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            computed: {
+               msg() {
+                   if(this.a.length < 3) {
+                       return '少了'
+                   }else if(this.a.length >6) {
+                       return '多了'
+                   }
+                   return ''
+               }
+            },
+            data: {
+                a:''
+            }
+        })
+    </script>
+</body>
+</html>

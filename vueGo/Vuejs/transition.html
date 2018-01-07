@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Keywords" content="关键字,关键词">
+    <meta name="Description" content="描述和简介">
+    <title>Title</title>
+    <!--<style type="text/css">-->
+        <!--*{margin:0;padding:0;}-->
+        <!--body,ul,li,ol,dl,dd,p,h1,h2,h3,h4,h5,h6{ margin:0;}-->
+        <!--a{text-decoration:none;}-->
+        <!--img{border:none;}-->
+        <!--ol,ul{list-style:none;}-->
+	<!--</style>-->
+    <link rel="stylesheet" href="node_modules/animate.css/animate.css">
+    <style>
+        .text {
+            width: 100px;
+            height: 100px;
+            background: red;
+            border: 1px solid red;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div id="app">
+        <button @click="flag = !flag">切换</button>
+        <transition enter-active-class="animated bounceInUp" leave-active-class="animated bounceOutDown">
+            <div v-show="flag" class="text ">你好</div>
+        </transition>
+    </div>
+
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data:{
+                flag: true,
+            }
+        });
+    </script>
+</body>
+</html>
