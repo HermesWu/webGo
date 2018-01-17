@@ -1,0 +1,19 @@
+{
+  "name": "otcBtc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "bootstrap": "^3.3.7",
+    "normalize.css": "^7.0.0",
+    "vue": "^2.5.13",
+    "vue-router": "^3.0.1"
+  }
+}
