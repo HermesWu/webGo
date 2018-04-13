@@ -16,6 +16,7 @@
                 this.getData();
             }
           //获取hash值
+            console.log(window.location.hash)
             this.hash = window.location.hash.slice(2) || 'all'
             //监控hash值变化
             window.addEventListener('hashchange',()=>{
